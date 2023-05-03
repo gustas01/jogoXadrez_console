@@ -1,5 +1,7 @@
 ﻿using tabuleiro;
+using xadrez_console;
 
-Position P = new Position(3, 4);
+Board B = new Board(8, 8);
 
-Console.WriteLine(P);
+Console.WriteLine(B);
+Screen.printBoard(B);
