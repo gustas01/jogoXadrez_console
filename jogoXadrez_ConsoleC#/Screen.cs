@@ -7,9 +7,9 @@ namespace xadrez_console {
     public static void printBoard(Board board) {
       for (int i = 0; i < board.rows; i++) {
         for (int j = 0; j < board.columns; j++) {
-          if (board.piece(i, j) == null)
+          if (board.Piece(i, j) == null)
             Console.Write("- ");
-          Console.Write(board.piece(i, j) + " ");
+          Console.Write(board.Piece(i, j) + " ");
         }
         Console.WriteLine();
       }

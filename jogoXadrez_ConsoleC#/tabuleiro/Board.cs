@@ -16,8 +16,13 @@ namespace tabuleiro {
       pieces = new Piece[rows, columns];
     }
 
-    public Piece piece(int row, int column) {
+    public Piece Piece(int row, int column) {
       return pieces[row, column];
+    }
+
+    public void InsertPiece(Piece piece, Position position) {
+      pieces[position.row, position.column] = piece;
+      piece.position = position;
     }
   }
 }
