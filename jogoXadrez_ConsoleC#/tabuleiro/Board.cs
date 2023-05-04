@@ -37,6 +37,16 @@ namespace tabuleiro {
       piece.position = position;
     }
 
+    public Piece? RemovePiece(Position position) {
+      if (Piece(position) == null)
+        return null;
+
+      Piece aux = Piece(position);
+      aux.position = null;
+      pieces[position.row, position.column] = null;
+      return aux;
+    }
+
     public bool ValidPosition(Position position) {
       if (position.row < 0 || position.row >= rows || position.column < 0 || position.column >= columns)
         return false;

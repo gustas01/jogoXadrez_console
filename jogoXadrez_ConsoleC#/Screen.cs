@@ -1,6 +1,6 @@
 ﻿using System;
 using tabuleiro;
-
+using xadrez;
 
 namespace xadrez_console {
   internal class Screen {
@@ -30,6 +30,13 @@ namespace xadrez_console {
         Console.Write(piece);
         Console.ForegroundColor = aux;
       }
+    }
+
+    public static PosicaoXadrez readChessPosition() {
+      string s = Console.ReadLine();
+      char row = s[0];
+      int column = int.Parse(s[1] + " ");
+      return new PosicaoXadrez(row, column);
     }
   }
 }

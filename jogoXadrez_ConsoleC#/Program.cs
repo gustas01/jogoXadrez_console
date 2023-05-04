@@ -3,12 +3,20 @@ using xadrez_console;
 using xadrez;
 
 try {
-  Board board = new Board(8, 8);
-  board.InsertPiece(new King(board, Color.White), new Position(0, 0));
-  board.InsertPiece(new Tower(board, Color.Black), new Position(0, 1));
+  ChessMatch chessMatch = new ChessMatch();
+  while (!chessMatch.isMatchFineshed) {
+    Console.Clear();
+    Screen.printBoard(chessMatch.board);
 
-  Screen.printBoard(board);
-}catch(BoardException e) {
-    Console.WriteLine(e.Message);
+    Console.Write("Origem: ");
+    Position origin = Screen.readChessPosition().toPosition();
+    Console.Write("Destino: ");
+    Position destinarion = Screen.readChessPosition().toPosition();
+
+    chessMatch.executeMoviment(origin, destinarion);
+  }
+}
+catch (BoardException e) {
+  Console.WriteLine(e.Message);
 }
 

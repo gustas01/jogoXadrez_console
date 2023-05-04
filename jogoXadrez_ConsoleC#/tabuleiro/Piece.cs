@@ -17,5 +17,7 @@ namespace tabuleiro {
       this.color = color;
       this.qteMoves = 0;
     }
+
+    public void incrementQteMoves() { this.qteMoves++; }
   }
 }
