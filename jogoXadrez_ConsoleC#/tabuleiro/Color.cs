@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace tabuleiro {
   enum Color {
-    Branca,
-    Preta,
-    Amarela,
-    Azul
+    White,
+    Black,
+    Yellow,
+    Blue
   }
 }
