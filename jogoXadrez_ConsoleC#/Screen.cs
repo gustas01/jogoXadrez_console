@@ -44,7 +44,7 @@ namespace xadrez_console {
         Console.Write("- ");
       }
       else {
-        if (piece.color == Color.White) {
+        if (piece.color == Color.Branca) {
           Console.Write(piece);
         }
         else {

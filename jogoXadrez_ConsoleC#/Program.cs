@@ -7,6 +7,9 @@ try {
   while (!chessMatch.isMatchFineshed) {
     Console.Clear();
     Screen.printBoard(chessMatch.board);
+    Console.WriteLine();
+    Console.WriteLine("Turno: " + chessMatch.turn);
+    Console.WriteLine("Aguardando jogada da peça: " + chessMatch.currentPlayer);
 
     Console.Write("Origem: ");
     Position origin = Screen.readChessPosition().toPosition();
@@ -19,7 +22,7 @@ try {
     Console.Write("Destino: ");
     Position destinarion = Screen.readChessPosition().toPosition();
 
-    chessMatch.executeMoviment(origin, destinarion);
+    chessMatch.MakeAPlay(origin, destinarion);
   }
 }
 catch (BoardException e) {
