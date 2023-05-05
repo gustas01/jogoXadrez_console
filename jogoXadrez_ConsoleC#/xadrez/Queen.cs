@@ -10,6 +10,10 @@ namespace xadrez {
     public Queen(Board board, Color color) : base(board, color) {
     }
 
+    public override bool[,] PossibleMoviments() {
+      throw new NotImplementedException();
+    }
+
     public override string ToString() {
       return "D";
     }

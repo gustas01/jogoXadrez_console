@@ -10,6 +10,12 @@ try {
 
     Console.Write("Origem: ");
     Position origin = Screen.readChessPosition().toPosition();
+
+    bool[,] possiblePositions = chessMatch.board.Piece(origin).PossibleMoviments();
+    Console.Clear();
+    Screen.printBoard(chessMatch.board, possiblePositions);
+
+    Console.WriteLine();
     Console.Write("Destino: ");
     Position destinarion = Screen.readChessPosition().toPosition();
 
