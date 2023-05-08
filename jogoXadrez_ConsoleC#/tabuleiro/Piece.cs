@@ -20,6 +20,20 @@ namespace tabuleiro {
 
     public void incrementQteMoves() { this.qteMoves++; }
 
+    public bool ExistPossibleMoviments() {
+      bool[,] moviments = PossibleMoviments();
+      for (int i = 0; i < board.rows; i++) {
+        for(int j = 0; j < board.columns; j++) {
+          if (moviments[i, j]) return true;
+        }
+      }
+      return false;
+    }
+
+    public bool CanMoveTo(Position position) {
+      return PossibleMoviments()[position.row, position.column];
+    }
+
     public abstract bool[,] PossibleMoviments();
   }
 }

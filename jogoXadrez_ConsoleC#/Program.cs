@@ -5,6 +5,8 @@ using xadrez;
 try {
   ChessMatch chessMatch = new ChessMatch();
   while (!chessMatch.isMatchFineshed) {
+    try {
+
     Console.Clear();
     Screen.printBoard(chessMatch.board);
     Console.WriteLine();
@@ -13,6 +15,7 @@ try {
 
     Console.Write("Origem: ");
     Position origin = Screen.readChessPosition().toPosition();
+    chessMatch.ValidateOriginPosition(origin);
 
     bool[,] possiblePositions = chessMatch.board.Piece(origin).PossibleMoviments();
     Console.Clear();
@@ -20,9 +23,15 @@ try {
 
     Console.WriteLine();
     Console.Write("Destino: ");
-    Position destinarion = Screen.readChessPosition().toPosition();
+    Position destination = Screen.readChessPosition().toPosition();
+      chessMatch.ValidateDestinationPosition(origin, destination);
 
-    chessMatch.MakeAPlay(origin, destinarion);
+    chessMatch.MakeAPlay(origin, destination);
+    }
+      catch(BoardException e) {
+      Console.WriteLine(e.Message);
+      Console.ReadLine();
+    }
   }
 }
 catch (BoardException e) {

@@ -33,9 +33,25 @@ namespace xadrez {
       currentPlayer = currentPlayer == Color.Branca ? Color.Preta : Color.Branca;
     }
 
+    public void ValidateOriginPosition(Position position) {
+      if (board.Piece(position) == null) throw new BoardException("Não existe peça na posição de origem escolhida");
+      if (currentPlayer != board.Piece(position).color) throw new BoardException("A peça escolhida não é sua");
+      if (!board.Piece(position).ExistPossibleMoviments()) throw new BoardException("Não há movimentos possíveis para a peça escolhida");
+    }
+
+    public void ValidateDestinationPosition(Position origin, Position destination) {
+      if (!board.Piece(origin).CanMoveTo(destination)) throw new BoardException("Posição de destino inválida");
+    }
+
     private void InsertPieces() {
       board.InsertPiece(new King(board, Color.Branca), new PosicaoXadrez('c', 1).toPosition());
+      board.InsertPiece(new King(board, Color.Branca), new PosicaoXadrez('b', 1).toPosition());
+      board.InsertPiece(new King(board, Color.Branca), new PosicaoXadrez('b', 2).toPosition());
+      board.InsertPiece(new King(board, Color.Branca), new PosicaoXadrez('c', 2).toPosition());
+      board.InsertPiece(new King(board, Color.Branca), new PosicaoXadrez('d', 1).toPosition());
+      board.InsertPiece(new King(board, Color.Branca), new PosicaoXadrez('d', 2).toPosition());
       board.InsertPiece(new Tower(board, Color.Preta), new PosicaoXadrez('a', 5).toPosition());
+
     }
   }
 }
