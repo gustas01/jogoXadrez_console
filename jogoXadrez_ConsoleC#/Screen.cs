@@ -11,9 +11,16 @@ namespace xadrez_console {
       PrintCapturedPieces(chessMatch);
       Console.WriteLine();
       Console.WriteLine("Turno: " + chessMatch.turn);
-      Console.WriteLine("Aguardando jogada da peça: " + chessMatch.currentPlayer);
-      
-      if(chessMatch.xeque) Console.WriteLine("XEQUE!!!");
+      if (!chessMatch.isMatchFineshed) {
+        Console.WriteLine("Aguardando jogada da peça: " + chessMatch.currentPlayer);
+        if (chessMatch.xeque) Console.WriteLine("XEQUE!!!");
+
+      }
+      else {
+        Console.WriteLine("XEQUEMATE!!!");
+        Console.WriteLine("Vencedor: " + chessMatch.currentPlayer);
+      }
+
     }
 
     public static void PrintCapturedPieces(ChessMatch chessMatch) {
@@ -24,7 +31,7 @@ namespace xadrez_console {
       ConsoleColor aux = Console.ForegroundColor;
       Console.ForegroundColor = ConsoleColor.Yellow;
       PrintSet(chessMatch.CapturedPieces(Color.Preta));
-      Console.ForegroundColor= aux;
+      Console.ForegroundColor = aux;
       Console.WriteLine();
     }
 

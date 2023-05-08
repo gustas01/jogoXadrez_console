@@ -7,30 +7,32 @@ try {
   while (!chessMatch.isMatchFineshed) {
     try {
 
-    Console.Clear();
+      Console.Clear();
       Screen.PrintMatch(chessMatch);
-    
 
-    Console.Write("Origem: ");
-    Position origin = Screen.readChessPosition().toPosition();
-    chessMatch.ValidateOriginPosition(origin);
 
-    bool[,] possiblePositions = chessMatch.board.Piece(origin).PossibleMoviments();
-    Console.Clear();
-    Screen.printBoard(chessMatch.board, possiblePositions);
+      Console.Write("Origem: ");
+      Position origin = Screen.readChessPosition().toPosition();
+      chessMatch.ValidateOriginPosition(origin);
 
-    Console.WriteLine();
-    Console.Write("Destino: ");
-    Position destination = Screen.readChessPosition().toPosition();
+      bool[,] possiblePositions = chessMatch.board.Piece(origin).PossibleMoviments();
+      Console.Clear();
+      Screen.printBoard(chessMatch.board, possiblePositions);
+
+      Console.WriteLine();
+      Console.Write("Destino: ");
+      Position destination = Screen.readChessPosition().toPosition();
       chessMatch.ValidateDestinationPosition(origin, destination);
 
-    chessMatch.MakeAPlay(origin, destination);
+      chessMatch.MakeAPlay(origin, destination);
     }
-      catch(BoardException e) {
+    catch (BoardException e) {
       Console.WriteLine(e.Message);
       Console.ReadLine();
     }
   }
+  Console.Clear();
+  Screen.PrintMatch(chessMatch);
 }
 catch (BoardException e) {
   Console.WriteLine(e.Message);
