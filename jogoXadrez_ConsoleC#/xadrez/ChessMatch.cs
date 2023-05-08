@@ -71,7 +71,7 @@ namespace xadrez {
     }
 
     public void ValidateDestinationPosition(Position origin, Position destination) {
-      if (!board.Piece(origin).CanMoveTo(destination)) throw new BoardException("Posição de destino inválida");
+      if (!board.Piece(origin).PossibleMoviment(destination)) throw new BoardException("Posição de destino inválida");
     }
 
     public HashSet<Piece> CapturedPieces(Color color) {
