@@ -38,7 +38,7 @@ namespace xadrez {
       pos.DefineValues(position.row, position.column + 1);
       while (board.ValidPosition(pos) && CanMove(pos)) {
         moviments[pos.row, pos.column] = true;
-        if (board.Piece(pos) != null && board.Piece(position).color != color) {
+        if (board.Piece(pos) != null && board.Piece(pos).color != color) {
           break;
         }
         pos.column++;

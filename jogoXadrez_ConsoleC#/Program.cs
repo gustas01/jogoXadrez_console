@@ -8,10 +8,8 @@ try {
     try {
 
     Console.Clear();
-    Screen.printBoard(chessMatch.board);
-    Console.WriteLine();
-    Console.WriteLine("Turno: " + chessMatch.turn);
-    Console.WriteLine("Aguardando jogada da peça: " + chessMatch.currentPlayer);
+      Screen.PrintMatch(chessMatch);
+    
 
     Console.Write("Origem: ");
     Position origin = Screen.readChessPosition().toPosition();

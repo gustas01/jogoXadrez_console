@@ -4,6 +4,35 @@ using xadrez;
 
 namespace xadrez_console {
   internal class Screen {
+
+    public static void PrintMatch(ChessMatch chessMatch) {
+      printBoard(chessMatch.board);
+      Console.WriteLine();
+      PrintCapturedPieces(chessMatch);
+      Console.WriteLine();
+      Console.WriteLine("Turno: " + chessMatch.turn);
+      Console.WriteLine("Aguardando jogada da peça: " + chessMatch.currentPlayer);
+    }
+
+    public static void PrintCapturedPieces(ChessMatch chessMatch) {
+      Console.WriteLine("Peças capturadas: ");
+      Console.Write("Brancas: ");
+      PrintSet(chessMatch.CapturedPieces(Color.Branca));
+      Console.Write("Pretas: ");
+      ConsoleColor aux = Console.ForegroundColor;
+      Console.ForegroundColor = ConsoleColor.Yellow;
+      PrintSet(chessMatch.CapturedPieces(Color.Preta));
+      Console.ForegroundColor= aux;
+      Console.WriteLine();
+    }
+
+    public static void PrintSet(HashSet<Piece> set) {
+      Console.Write("[");
+      foreach (Piece piece in set) {
+        Console.Write(piece + " ");
+      }
+      Console.WriteLine("]");
+    }
     public static void printBoard(Board board) {
       for (int i = 0; i < board.rows; i++) {
         Console.Write(8 - i + " ");

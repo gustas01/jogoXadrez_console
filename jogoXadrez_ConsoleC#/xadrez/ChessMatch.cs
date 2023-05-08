@@ -11,12 +11,16 @@ namespace xadrez {
     public int turn { get; private set; }
     public Color currentPlayer { get; private set; }
     public bool isMatchFineshed { get; private set; }
+    private HashSet<Piece> pieces;
+    private HashSet<Piece> capturedPieces;
 
     public ChessMatch() {
       this.board = new Board(8, 8);
       turn = 1;
       currentPlayer = Color.Branca;
       isMatchFineshed = false;
+      pieces = new HashSet<Piece>();
+      capturedPieces = new HashSet<Piece>();
       InsertPieces();
     }
 
@@ -25,6 +29,9 @@ namespace xadrez {
       p.incrementQteMoves();
       Piece capturedPiece = board.RemovePiece(destination);
       board.InsertPiece(p, destination);
+      if(capturedPiece != null) {
+        capturedPieces.Add(capturedPiece);
+      }
     }
 
     public void MakeAPlay(Position origin, Position destination) {
@@ -43,14 +50,36 @@ namespace xadrez {
       if (!board.Piece(origin).CanMoveTo(destination)) throw new BoardException("Posição de destino inválida");
     }
 
+    public HashSet<Piece> CapturedPieces(Color color) {
+      HashSet<Piece> aux = new HashSet<Piece>();
+      foreach(Piece piece in capturedPieces) {
+        if(piece.color == color) aux.Add(piece);
+      }
+      return aux;
+    }
+
+    public HashSet<Piece> PiecesInGame(Color color) {
+      HashSet<Piece> aux = new HashSet<Piece>();
+      foreach (Piece piece in pieces) {
+        if (piece.color == color) aux.Add(piece);
+      }
+      aux.ExceptWith(CapturedPieces(color));
+      return aux;
+    }
+
+    public void InsertNewPiece(char column, int row, Piece piece) {
+      board.InsertPiece(piece, new PosicaoXadrez(column, row).toPosition());
+      pieces.Add(piece);
+    }
+
     private void InsertPieces() {
-      board.InsertPiece(new King(board, Color.Branca), new PosicaoXadrez('c', 1).toPosition());
-      board.InsertPiece(new King(board, Color.Branca), new PosicaoXadrez('b', 1).toPosition());
-      board.InsertPiece(new King(board, Color.Branca), new PosicaoXadrez('b', 2).toPosition());
-      board.InsertPiece(new King(board, Color.Branca), new PosicaoXadrez('c', 2).toPosition());
-      board.InsertPiece(new King(board, Color.Branca), new PosicaoXadrez('d', 1).toPosition());
-      board.InsertPiece(new King(board, Color.Branca), new PosicaoXadrez('d', 2).toPosition());
-      board.InsertPiece(new Tower(board, Color.Preta), new PosicaoXadrez('a', 5).toPosition());
+      InsertNewPiece('c', 1, new King(board, Color.Branca));
+      InsertNewPiece('b', 2, new King(board, Color.Branca));
+      InsertNewPiece('b', 1, new King(board, Color.Branca));
+      InsertNewPiece('c', 2, new King(board, Color.Branca));
+      InsertNewPiece('d', 1, new King(board, Color.Branca));
+      InsertNewPiece('d', 2, new King(board, Color.Branca));
+      InsertNewPiece('a', 5, new Tower(board, Color.Preta));
 
     }
   }
