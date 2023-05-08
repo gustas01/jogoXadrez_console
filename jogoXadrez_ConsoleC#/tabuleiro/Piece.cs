@@ -18,7 +18,8 @@ namespace tabuleiro {
       this.qteMoves = 0;
     }
 
-    public void incrementQteMoves() { this.qteMoves++; }
+    public void IncrementQteMoves() { this.qteMoves++; }
+    public void DecrementQteMoves() { this.qteMoves--; }
 
     public bool ExistPossibleMoviments() {
       bool[,] moviments = PossibleMoviments();
