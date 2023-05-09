@@ -36,6 +36,24 @@ namespace xadrez {
       if (capturedPiece != null) {
         capturedPieces.Add(capturedPiece);
       }
+
+      //roque pequeno
+      if(p is King && destination.column == origin.column + 2) {
+        Position originTower = new Position(origin.row, origin.column + 3);
+        Position destinationTower = new Position(origin.row, origin.column + 1);
+        Piece tower = board.RemovePiece(originTower);
+        tower.IncrementQteMoves();
+        board.InsertPiece(tower, destinationTower);
+      }
+
+      //roque grande
+      if (p is King && destination.column == origin.column - 2) {
+        Position originTower = new Position(origin.row, origin.column - 4);
+        Position destinationTower = new Position(origin.row, origin.column - 1);
+        Piece tower = board.RemovePiece(originTower);
+        tower.IncrementQteMoves();
+        board.InsertPiece(tower, destinationTower);
+      }
       return capturedPiece;
     }
 
@@ -47,6 +65,24 @@ namespace xadrez {
         capturedPieces.Remove(capturedPiece);
       }
       board.InsertPiece(piece, origin);
+
+      //roque pequeno
+      if (piece is King && destination.column == origin.column + 2) {
+        Position originTower = new Position(origin.row, origin.column + 3);
+        Position destinationTower = new Position(origin.row, origin.column + 1);
+        Piece tower = board.RemovePiece(destinationTower);
+        tower.DecrementQteMoves();
+        board.InsertPiece(tower, originTower);
+      }
+
+      //roque grande
+      if (piece is King && destination.column == origin.column - 2) {
+        Position originTower = new Position(origin.row, origin.column - 4);
+        Position destinationTower = new Position(origin.row, origin.column - 1);
+        Piece tower = board.RemovePiece(destinationTower);
+        tower.DecrementQteMoves();
+        board.InsertPiece(tower, originTower);
+      }
     }
 
     public void MakeAPlay(Position origin, Position destination) {
@@ -148,7 +184,7 @@ namespace xadrez {
       InsertNewPiece('b', 1, new Horse(board, Color.Branca));
       InsertNewPiece('c', 1, new Bishop(board, Color.Branca));
       InsertNewPiece('d', 1, new Queen(board, Color.Branca));
-      InsertNewPiece('e', 1, new King(board, Color.Branca));
+      InsertNewPiece('e', 1, new King(board, Color.Branca, this));
       InsertNewPiece('f', 1, new Bishop(board, Color.Branca));
       InsertNewPiece('g', 1, new Horse(board, Color.Branca));
       InsertNewPiece('h', 1, new Tower(board, Color.Branca));
@@ -165,7 +201,7 @@ namespace xadrez {
       InsertNewPiece('b', 8, new Horse(board, Color.Preta));
       InsertNewPiece('c', 8, new Bishop(board, Color.Preta));
       InsertNewPiece('d', 8, new Queen(board, Color.Preta));
-      InsertNewPiece('e', 8, new King(board, Color.Preta));
+      InsertNewPiece('e', 8, new King(board, Color.Preta, this));
       InsertNewPiece('f', 8, new Bishop(board, Color.Preta));
       InsertNewPiece('g', 8, new Horse(board, Color.Preta));
       InsertNewPiece('h', 8, new Tower(board, Color.Preta));

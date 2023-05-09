@@ -8,7 +8,7 @@ using tabuleiro;
 
 namespace xadrez {
   internal class Pawn : Piece {
-    ChessMatch chessMatch;
+    private ChessMatch chessMatch;
     public Pawn(Board board, Color color, ChessMatch chessMatch) : base(board, color) {
       this.chessMatch = chessMatch;
     }
