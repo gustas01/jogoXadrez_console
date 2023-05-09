@@ -188,14 +188,14 @@ namespace xadrez {
       InsertNewPiece('f', 1, new Bishop(board, Color.Branca));
       InsertNewPiece('g', 1, new Horse(board, Color.Branca));
       InsertNewPiece('h', 1, new Tower(board, Color.Branca));
-      InsertNewPiece('a', 2, new Pawn(board, Color.Branca, this));
-      InsertNewPiece('b', 2, new Pawn(board, Color.Branca, this));
-      InsertNewPiece('c', 2, new Pawn(board, Color.Branca, this));
-      InsertNewPiece('d', 2, new Pawn(board, Color.Branca, this));
-      InsertNewPiece('e', 2, new Pawn(board, Color.Branca, this));
-      InsertNewPiece('f', 2, new Pawn(board, Color.Branca, this));
-      InsertNewPiece('g', 2, new Pawn(board, Color.Branca, this));
-      InsertNewPiece('h', 2, new Pawn(board, Color.Branca, this));
+      InsertNewPiece('a', 2, new Pawn(board, Color.Branca));
+      InsertNewPiece('b', 2, new Pawn(board, Color.Branca));
+      InsertNewPiece('c', 2, new Pawn(board, Color.Branca));
+      InsertNewPiece('d', 2, new Pawn(board, Color.Branca));
+      InsertNewPiece('e', 2, new Pawn(board, Color.Branca));
+      InsertNewPiece('f', 2, new Pawn(board, Color.Branca));
+      InsertNewPiece('g', 2, new Pawn(board, Color.Branca));
+      InsertNewPiece('h', 2, new Pawn(board, Color.Branca));
 
       InsertNewPiece('a', 8, new Tower(board, Color.Preta));
       InsertNewPiece('b', 8, new Horse(board, Color.Preta));
@@ -205,14 +205,14 @@ namespace xadrez {
       InsertNewPiece('f', 8, new Bishop(board, Color.Preta));
       InsertNewPiece('g', 8, new Horse(board, Color.Preta));
       InsertNewPiece('h', 8, new Tower(board, Color.Preta));
-      InsertNewPiece('a', 7, new Pawn(board, Color.Preta, this));
-      InsertNewPiece('b', 7, new Pawn(board, Color.Preta, this));
-      InsertNewPiece('c', 7, new Pawn(board, Color.Preta, this));
-      InsertNewPiece('d', 7, new Pawn(board, Color.Preta, this));
-      InsertNewPiece('e', 7, new Pawn(board, Color.Preta, this));
-      InsertNewPiece('f', 7, new Pawn(board, Color.Preta, this));
-      InsertNewPiece('g', 7, new Pawn(board, Color.Preta, this));
-      InsertNewPiece('h', 7, new Pawn(board, Color.Preta, this));
+      InsertNewPiece('a', 7, new Pawn(board, Color.Preta));
+      InsertNewPiece('b', 7, new Pawn(board, Color.Preta));
+      InsertNewPiece('c', 7, new Pawn(board, Color.Preta));
+      InsertNewPiece('d', 7, new Pawn(board, Color.Preta));
+      InsertNewPiece('e', 7, new Pawn(board, Color.Preta));
+      InsertNewPiece('f', 7, new Pawn(board, Color.Preta));
+      InsertNewPiece('g', 7, new Pawn(board, Color.Preta));
+      InsertNewPiece('h', 7, new Pawn(board, Color.Preta));
 
     }
   }
