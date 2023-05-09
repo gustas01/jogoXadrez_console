@@ -92,6 +92,20 @@ namespace xadrez {
         throw new BoardException("Você não pode se colcoar em xeque");
       }
 
+      Piece p = board.Piece(destination);
+      
+      //promoção
+      if(p is Pawn) {
+        if((p.color == Color.Branca && destination.row == 0) || (p.color == Color.Preta && destination.row == 7)) {
+          p = board.RemovePiece(destination);
+          pieces.Remove(p);
+          Piece queen = new Queen(board, p.color);
+          board.InsertPiece(queen, destination);
+          pieces.Add(queen);
+        }
+      }
+
+
       xeque = IsInXeque(Opponent(currentPlayer));
 
       if (XequeMateTest(Opponent(currentPlayer))) isMatchFineshed = true;
