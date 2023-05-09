@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 using tabuleiro;
@@ -14,6 +15,7 @@ namespace xadrez {
     private HashSet<Piece> pieces;
     private HashSet<Piece> capturedPieces;
     public bool xeque { get; private set; }
+    public Piece VulnerableEnPassant { get; private set; }
 
     public ChessMatch() {
       this.board = new Board(8, 8);
@@ -142,26 +144,39 @@ namespace xadrez {
     }
 
     private void InsertPieces() {
-      /*InsertNewPiece('c', 1, new Tower(board, Color.Branca));
-      InsertNewPiece('c', 2, new Tower(board, Color.Branca));
-      InsertNewPiece('d', 1, new King(board, Color.Branca));
-      InsertNewPiece('d', 2, new Tower(board, Color.Branca));
-      InsertNewPiece('e', 1, new Tower(board, Color.Branca));
-      InsertNewPiece('e', 2, new Tower(board, Color.Branca));
+      InsertNewPiece('a', 1, new Tower(board, Color.Branca));
+      InsertNewPiece('b', 1, new Horse(board, Color.Branca));
+      InsertNewPiece('c', 1, new Bishop(board, Color.Branca));
+      InsertNewPiece('d', 1, new Queen(board, Color.Branca));
+      InsertNewPiece('e', 1, new King(board, Color.Branca));
+      InsertNewPiece('f', 1, new Bishop(board, Color.Branca));
+      InsertNewPiece('g', 1, new Horse(board, Color.Branca));
+      InsertNewPiece('h', 1, new Tower(board, Color.Branca));
+      InsertNewPiece('a', 2, new Pawn(board, Color.Branca, this));
+      InsertNewPiece('b', 2, new Pawn(board, Color.Branca, this));
+      InsertNewPiece('c', 2, new Pawn(board, Color.Branca, this));
+      InsertNewPiece('d', 2, new Pawn(board, Color.Branca, this));
+      InsertNewPiece('e', 2, new Pawn(board, Color.Branca, this));
+      InsertNewPiece('f', 2, new Pawn(board, Color.Branca, this));
+      InsertNewPiece('g', 2, new Pawn(board, Color.Branca, this));
+      InsertNewPiece('h', 2, new Pawn(board, Color.Branca, this));
 
-      InsertNewPiece('c', 7, new Tower(board, Color.Preta));
-      InsertNewPiece('c', 8, new Tower(board, Color.Preta));
-      InsertNewPiece('d', 8, new King(board, Color.Preta));
-      InsertNewPiece('d', 7, new Tower(board, Color.Preta));
-      InsertNewPiece('e', 7, new Tower(board, Color.Preta));
-      InsertNewPiece('e', 8, new Tower(board, Color.Preta));*/
-
-      InsertNewPiece('c', 1, new Tower(board, Color.Branca));
-      InsertNewPiece('h', 7, new Tower(board, Color.Branca));
-      InsertNewPiece('d', 1, new King(board, Color.Branca));
-
-      InsertNewPiece('b', 8, new Tower(board, Color.Preta));
-      InsertNewPiece('a', 8, new King(board, Color.Preta));
+      InsertNewPiece('a', 8, new Tower(board, Color.Preta));
+      InsertNewPiece('b', 8, new Horse(board, Color.Preta));
+      InsertNewPiece('c', 8, new Bishop(board, Color.Preta));
+      InsertNewPiece('d', 8, new Queen(board, Color.Preta));
+      InsertNewPiece('e', 8, new King(board, Color.Preta));
+      InsertNewPiece('f', 8, new Bishop(board, Color.Preta));
+      InsertNewPiece('g', 8, new Horse(board, Color.Preta));
+      InsertNewPiece('h', 8, new Tower(board, Color.Preta));
+      InsertNewPiece('a', 7, new Pawn(board, Color.Preta, this));
+      InsertNewPiece('b', 7, new Pawn(board, Color.Preta, this));
+      InsertNewPiece('c', 7, new Pawn(board, Color.Preta, this));
+      InsertNewPiece('d', 7, new Pawn(board, Color.Preta, this));
+      InsertNewPiece('e', 7, new Pawn(board, Color.Preta, this));
+      InsertNewPiece('f', 7, new Pawn(board, Color.Preta, this));
+      InsertNewPiece('g', 7, new Pawn(board, Color.Preta, this));
+      InsertNewPiece('h', 7, new Pawn(board, Color.Preta, this));
 
     }
   }
